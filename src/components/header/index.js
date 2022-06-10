@@ -36,8 +36,12 @@ const Header = () => {
         <button className="text-sm text-white hover:opacity-50 transition-all duration-300 rounded-lg bg-signIn py-[5px] px-4 font-medium">
           Sign In
         </button>
-        <div className="w-[22px] cursor-pointer transition-all duration-300 hover:opacity-50 h-[22px] relative">
-          <img className="object-cover w-full" src={fullScreen} alt="" />
+        <div className="w-[22px] justify-center flex items-center mt-[6px] cursor-pointer transition-all duration-300 hover:opacity-50 h-[22px] relative">
+          <img
+            className="object-cover leading-[0] w-full"
+            src={fullScreen}
+            alt=""
+          />
         </div>
       </div>
     </StyledNavbar>
