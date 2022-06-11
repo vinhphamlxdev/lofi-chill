@@ -1,17 +1,26 @@
+import chill1 from "~/assets/songs/chill1.mp3";
+import chill2 from "~/assets/songs/chill2.mp3";
+import chill3 from "~/assets/songs/chill3.mp3";
+import chill4 from "~/assets/songs/chill4.mp3";
 export const chill = [
   {
     id: 1,
     name: "Cảm Ơn Vì Tất Cả (Lofi Ver)",
-    path: "~/assets/songs/chill1.mp3",
+    src: `${chill1}`,
   },
   {
     id: 2,
     name: "Đào Nương (Lofi Ver)",
-    path: "~/assets/songs/chill2.mp3",
+    src: `${chill2}`,
   },
   {
     id: 3,
     name: "Chẳng Thể Tìm Được Em (Lofi Ver)",
-    path: "~/assets/songs/chill2.mp3",
+    src: `${chill3}`,
+  },
+  {
+    id: 4,
+    name: "Pastlives",
+    src: `${chill4}`,
   },
 ];

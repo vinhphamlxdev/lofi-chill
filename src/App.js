@@ -1,15 +1,15 @@
 import "./App.css";
-import BackgRound from "~/components/backgRound";
 import { Routes, Route } from "react-router-dom";
 import { Fragment } from "react";
 import { GlobalStyles } from "./styles/GlobalStyles";
+import Home from "./components/backgRound";
 function App() {
   return (
     <Fragment>
       <GlobalStyles></GlobalStyles>
-      <div className="w-full h-screen App">
-        <BackgRound></BackgRound>
-      </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
     </Fragment>
   );
 }

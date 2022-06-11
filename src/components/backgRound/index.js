@@ -3,9 +3,9 @@ import Header from "~/components/header";
 import Player from "~/components/playerControl";
 import PopupMenu from "../popup";
 import Video from "./Video";
-const BackgRound = () => {
+const Home = () => {
   return (
-    <div className="relative w-full h-screen overflow-hidden background-main">
+    <div className="relative w-full h-screen overflow-hidden Home-main">
       <Header />
       <Video />
       <Player />
@@ -14,4 +14,4 @@ const BackgRound = () => {
   );
 };
 
-export default BackgRound;
+export default Home;

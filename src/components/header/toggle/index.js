@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { put, takeEvery } from "redux-saga/effects";
 import styled from "styled-components";
 const StyledDarkmode = styled.div`
   margin-left: 8px;
