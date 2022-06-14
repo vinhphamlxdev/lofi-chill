@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import logo from "~/assets/logo.gif";
 import styled from "styled-components";
 import DarkMode from "./toggle";
@@ -6,6 +6,9 @@ import fullScreen from "~/assets/fullscreen.svg";
 import { FaCloudRain } from "react-icons/fa";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
+import { useDispatch, useSelector } from "react-redux";
+import rainMp3 from "~/assets/songs/rain.mp3";
+import { toggleRainStatus } from "~/redux-toolkit/darkmode/darkModeSlice";
 const StyledNavbar = styled.div`
   & .premium {
     background-image: linear-gradient(
@@ -17,6 +20,20 @@ const StyledNavbar = styled.div`
 `;
 
 const Header = () => {
+  const audioRef = useRef(null);
+  const [rain, setRain] = useState("rain");
+  const dispatch = useDispatch();
+  const toggleStatusRain = () => {
+    if (rain === "rain") {
+      setRain("");
+      audioRef.current.play();
+    } else {
+      setRain("rain");
+      audioRef.current.pause();
+    }
+
+    dispatch(toggleRainStatus(rain));
+  };
   const elem = document.documentElement;
   const [fullScreenHand, setFullScreenHand] = useState(false);
   const handleFullScreen = () => {
@@ -42,7 +59,10 @@ const Header = () => {
       </div>
       <div className="flex items-center gap-4">
         <Tippy content="City Rain">
-          <div className="text-2xl cursor-pointer hover:opacity-50 rain-btn ">
+          <div
+            onClick={toggleStatusRain}
+            className="text-2xl cursor-pointer hover:opacity-50 rain-btn "
+          >
             <FaCloudRain />
           </div>
         </Tippy>
@@ -71,6 +91,8 @@ const Header = () => {
           />
         </div>
       </div>
+      {/* <ReactAudioPlayer preload="auto" src={rainMp3} autoPlay loop /> */}
+      <audio loop ref={audioRef} src={rainMp3}></audio>
     </StyledNavbar>
   );
 };

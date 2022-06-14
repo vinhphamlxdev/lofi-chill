@@ -9,6 +9,20 @@ export const GlobalClasses = css`
     line-height: 32px;
     color: #fff;
   }
+  .video-in {
+    z-index: 1;
+    object-fit: cover;
+    position: absolute;
+    opacity: 1;
+    transition: opacity 1s;
+  }
+  .video-out {
+    z-index: 1;
+    object-fit: cover;
+    position: absolute;
+    opacity: 0;
+    transition: opacity 1s;
+  }
   .bold {
     font-size: 14px;
     font-weight: 700;

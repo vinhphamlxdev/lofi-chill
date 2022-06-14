@@ -10,12 +10,12 @@ const Control = ({
   setCurrentSongIndex,
   nextSongIndex,
 }) => {
-  console.log("current song:", songs[currentSongIndex].src);
+  // console.log("current song:", songs[currentSongIndex].src);
   const audioElem = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
   const nextSong = (forwards = true) => {
-    console.log("nextSong");
+    // console.log("nextSong");
     if (forwards) {
       setCurrentSongIndex(() => {
         let temp = currentSongIndex;
