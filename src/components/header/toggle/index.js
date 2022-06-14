@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleDarkMode } from "~/redux-toolkit/darkmode/darkModeSlice";
+import Tippy from "@tippyjs/react";
 
 const StyledDarkmode = styled.div`
   margin-left: 8px;
@@ -46,20 +47,22 @@ const DarkMode = () => {
   };
   return (
     <StyledDarkmode>
-      <button
-        onClick={ToggleDarkMode}
-        className={`relative rounded-full  bg-primary dark-mode ${
-          darkMode ? "active" : ""
-        }`}
-      >
-        <i className="absolute left-2 text-[10px] leading-[0] top-2/4 -translate-y-2/4 bi bi-sun-fill"></i>
-        <div
-          className={`absolute w-4 h-4  bg-white rounded-full spinner ${
+      <Tippy interactive content="DarkMode">
+        <button
+          onClick={ToggleDarkMode}
+          className={`relative rounded-full  bg-primary dark-mode ${
             darkMode ? "active" : ""
           }`}
-        ></div>
-        <i className="absolute right-2 text-[10px] leading-[0] top-2/4 -translate-y-2/4 bi bi-moon-fill"></i>
-      </button>
+        >
+          <i className="absolute left-2 text-[10px] leading-[0] top-2/4 -translate-y-2/4 bi bi-sun-fill"></i>
+          <div
+            className={`absolute w-4 h-4  bg-white rounded-full spinner ${
+              darkMode ? "active" : ""
+            }`}
+          ></div>
+          <i className="absolute right-2 text-[10px] leading-[0] top-2/4 -translate-y-2/4 bi bi-moon-fill"></i>
+        </button>
+      </Tippy>
     </StyledDarkmode>
   );
 };

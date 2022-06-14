@@ -9,6 +9,13 @@ export const GlobalClasses = css`
     line-height: 32px;
     color: #fff;
   }
+  .tippy-box {
+    font-size: 12px;
+  }
+  .tippy-content {
+    padding-top: 3px;
+    padding-bottom: 3px;
+  }
   .video-in {
     z-index: 1;
     object-fit: cover;
