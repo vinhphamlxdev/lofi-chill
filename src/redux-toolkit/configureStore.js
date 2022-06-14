@@ -1,7 +1,7 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
-import darkModeSlice from "./darkmode/darkModeSlice";
+import globalSlice from "./global/globalSlice";
 const reducer = combineReducers({
-  darkMode: darkModeSlice,
+  global: globalSlice,
 });
 const store = configureStore({
   reducer: reducer,

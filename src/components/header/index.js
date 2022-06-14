@@ -6,9 +6,9 @@ import fullScreen from "~/assets/fullscreen.svg";
 import { FaCloudRain } from "react-icons/fa";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import rainMp3 from "~/assets/songs/rain.mp3";
-import { toggleRainStatus } from "~/redux-toolkit/darkmode/darkModeSlice";
+import { toggleRainStatus } from "~/redux-toolkit/global/globalSlice";
 const StyledNavbar = styled.div`
   & .premium {
     background-image: linear-gradient(

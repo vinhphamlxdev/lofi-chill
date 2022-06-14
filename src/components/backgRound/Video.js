@@ -20,7 +20,7 @@ const StyledVideo = styled.div`
 `;
 
 const Video = () => {
-  const currentStatus = useSelector((state) => state.darkMode);
+  const currentStatus = useSelector((state) => state.global);
   const { mode, rainMode } = currentStatus;
   const statusDayNight = `${mode}`;
   const statusRain = `${rainMode}-${mode}`;

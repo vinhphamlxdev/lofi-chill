@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { useDispatch, useSelector } from "react-redux";
-import { toggleDarkMode } from "~/redux-toolkit/darkmode/darkModeSlice";
+import { useDispatch } from "react-redux";
+import { toggleDarkMode } from "~/redux-toolkit/global/globalSlice";
 import Tippy from "@tippyjs/react";
 
 const StyledDarkmode = styled.div`

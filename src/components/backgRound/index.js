@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import Header from "~/components/header";
 import Player from "~/components/playerControl";
 import PopupMenu from "../popup";
 import VideoYoutube from "../videoYotube";
-import ReactPlayer from "react-player";
 import Video from "./Video";
 const Home = () => {
   return (

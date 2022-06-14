@@ -7,6 +7,7 @@ module.exports = {
         signIn: "hsla(0,0%,100%,.25)",
         popUp: "rgba(0,0,0,.6)",
         textMenu: "#4e5054",
+        menuIcon: "#4e4054",
       },
     },
   },
