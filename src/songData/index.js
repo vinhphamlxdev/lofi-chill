@@ -47,7 +47,7 @@ export const rap = [
   },
   {
     id: 3,
-    name: "Đen - Mang Tiền Về Cho Mẹ ft. Nguyên Thảo",
+    name: "Đen - hai triệu năm ft. Biên",
     src: `${rap3}`,
   },
   {

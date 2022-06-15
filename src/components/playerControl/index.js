@@ -10,7 +10,7 @@ const Player = () => {
   const { mood, Playing } = useSelector((state) => state.global);
   return (
     <Fragment>
-      <div className="absolute h-[100px] bottom-0 left-0 right-0 z-50 flex items-center justify-center w-full p-8 required:">
+      <div className="absolute h-[100px] bottom-0 left-0 right-0 z-20 flex items-center justify-center w-full p-8 required:">
         {mood === "chill" && (
           <>
             <div className="absolute flex h-5 font-normal text-white left-20">

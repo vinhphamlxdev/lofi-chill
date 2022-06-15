@@ -9,6 +9,14 @@ export const GlobalClasses = css`
     line-height: 32px;
     color: #fff;
   }
+  video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    user-select: none;
+    object-fit: cover;
+    transition: 1s all;
+  }
   .item-mood.active {
     background-color: #f3a952;
     color: #fff;

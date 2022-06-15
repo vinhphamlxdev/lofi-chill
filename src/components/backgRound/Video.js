@@ -1,23 +1,9 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { useSelector } from "react-redux";
-import styled from "styled-components";
 import DayBg from "~/assets/video/Day.mp4";
 import NightBg from "~/assets/video/Night.mp4";
 import RainDaybg from "~/assets/video/RainDay.mp4";
 import RainNightBg from "~/assets/video/RainNight.mp4";
-const StyledVideo = styled.div`
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: opacity 0.5s ease-in-out;
-  video {
-    position: absolute;
-    user-select: none;
-    object-fit: cover;
-    transition: 1s all;
-  }
-`;
 
 const Video = () => {
   const currentStatus = useSelector((state) => state.global);
@@ -26,7 +12,7 @@ const Video = () => {
   const statusRain = `${rainMode}-${mode}`;
 
   return (
-    <StyledVideo>
+    <Fragment>
       <video
         className={`${statusDayNight === "day" ? "video-in" : "video-out"}`}
         autoPlay
@@ -59,7 +45,7 @@ const Video = () => {
       >
         <source src={RainNightBg} type="video/mp4" />
       </video>
-    </StyledVideo>
+    </Fragment>
   );
 };
 

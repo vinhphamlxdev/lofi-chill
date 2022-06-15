@@ -13,6 +13,12 @@ import ReactAudioPlayer from "react-audio-player";
 import cityTraffic from "~/assets/songs/cityTraffic.mp3";
 import cityRain from "~/assets/songs/rain.mp3";
 const StyledPopup = styled.div`
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 80px;
+  z-index: 30;
   .player__progress-volume {
     position: relative;
     width: 100%;

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import logo from "~/assets/logo.gif";
 import styled from "styled-components";
 import DarkMode from "./toggle";
@@ -6,9 +6,10 @@ import fullScreen from "~/assets/fullscreen.svg";
 import { FaCloudRain } from "react-icons/fa";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import rainMp3 from "~/assets/songs/rain.mp3";
 import { toggleRainStatus } from "~/redux-toolkit/global/globalSlice";
+import { Slider, Stack } from "@mui/material";
 const StyledNavbar = styled.div`
   & .premium {
     background-image: linear-gradient(
@@ -17,11 +18,17 @@ const StyledNavbar = styled.div`
       rgba(244, 202, 93, 0.9) 101.14%
     );
   }
+  & .range-volume {
+    height: 10px;
+    color: #f3a952;
+  }
 `;
 
 const Header = () => {
   const audioRef = useRef(null);
   const [rain, setRain] = useState("rain");
+  const { rainVolume } = useSelector((state) => state.global);
+  const [valueRain, setValueRain] = useState(0);
   const dispatch = useDispatch();
   const toggleStatusRain = () => {
     if (rain === "rain") {
@@ -47,7 +54,9 @@ const Header = () => {
       }
     }
   };
-
+  useEffect(() => {
+    audioRef.current.volume = rainVolume / 100;
+  }, [rainVolume]);
   return (
     <StyledNavbar className="h-20 z-50 flex justify-between items-center px-[48px] fixed w-full">
       <div className="relative max-w-[150px]  max-h-[150px]">
@@ -58,14 +67,28 @@ const Header = () => {
         />
       </div>
       <div className="flex items-center gap-4">
-        <Tippy content="City Rain">
+        <div className="relative">
           <div
             onClick={toggleStatusRain}
-            className="text-2xl cursor-pointer hover:opacity-50 rain-btn "
+            className="text-2xl cursor-pointer rain-btn "
           >
-            <FaCloudRain />
+            <FaCloudRain className=" hover:opacity-50" />
+            <Stack
+              className="absolute rain-track w-[100px] "
+              spacing={2}
+              direction="row"
+              sx={{ mb: 1 }}
+              alignItems="center"
+            >
+              <Slider
+                onChange={(e) => setValueRain(e.target.value)}
+                className="range-volume"
+                defaultValue={30}
+                aria-label="Disabled slider"
+              />
+            </Stack>
           </div>
-        </Tippy>
+        </div>
         <DarkMode />
         <Tippy content="Tính năng chưa được cập nhật">
           <div className="premium cursor-pointer  rounded-lg text-sm p-[5px] text-white ">

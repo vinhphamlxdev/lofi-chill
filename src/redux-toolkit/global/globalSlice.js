@@ -7,6 +7,7 @@ export const globalSlice = createSlice({
     mood: "chill",
     Playing: false,
     valueVolume: 50,
+    rainVolume: 50,
   },
   reducers: {
     toggleDarkMode: (state, action) => ({
@@ -31,7 +32,7 @@ export const globalSlice = createSlice({
     }),
     setValueVolumeRain: (state, action) => ({
       ...state,
-      valueVolumeRain: action.payload,
+      rainVolume: action.payload,
     }),
   },
 });
