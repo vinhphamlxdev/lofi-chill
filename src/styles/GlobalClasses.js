@@ -9,6 +9,10 @@ export const GlobalClasses = css`
     line-height: 32px;
     color: #fff;
   }
+  .item-mood.active {
+    background-color: #f3a952;
+    color: #fff;
+  }
   .tippy-box {
     font-size: 12px;
   }

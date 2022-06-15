@@ -3,6 +3,8 @@ import prevBtn from "~/assets/prev.svg";
 import playBtn from "~/assets/play.svg";
 import nextBtn from "~/assets/next.svg";
 import pauseBtn from "~/assets/pause.svg";
+import { useDispatch, useSelector } from "react-redux";
+import { setPlaying } from "~/redux-toolkit/global/globalSlice";
 
 const Control = ({
   songs,
@@ -13,7 +15,11 @@ const Control = ({
   // console.log("current song:", songs[currentSongIndex].src);
   const audioElem = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
-
+  const dispatch = useDispatch();
+  const { playing } = useSelector((state) => state.global);
+  useEffect(() => {
+    dispatch(setPlaying(isPlaying));
+  }, [dispatch, isPlaying, playing]);
   const nextSong = (forwards = true) => {
     // console.log("nextSong");
     if (forwards) {
@@ -36,6 +42,7 @@ const Control = ({
         return temp;
       });
     }
+    dispatch(setPlaying(isPlaying));
     setIsPlaying(true);
   };
   useEffect(() => {

@@ -5,6 +5,7 @@ export const globalSlice = createSlice({
     mode: "day",
     rainMode: "",
     mood: "chill",
+    Playing: false,
   },
   reducers: {
     toggleDarkMode: (state, action) => ({
@@ -19,8 +20,12 @@ export const globalSlice = createSlice({
       ...state,
       mood: action.payload,
     }),
+    setPlaying: (state, action) => ({
+      ...state,
+      Playing: action.payload,
+    }),
   },
 });
-export const { toggleDarkMode, toggleRainStatus, setMood } =
+export const { toggleDarkMode, toggleRainStatus, setMood, setPlaying } =
   globalSlice.actions;
 export default globalSlice.reducer;

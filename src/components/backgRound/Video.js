@@ -24,7 +24,6 @@ const Video = () => {
   const { mode, rainMode } = currentStatus;
   const statusDayNight = `${mode}`;
   const statusRain = `${rainMode}-${mode}`;
-  console.log(statusRain);
 
   return (
     <StyledVideo>
