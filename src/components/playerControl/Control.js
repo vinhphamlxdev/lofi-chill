@@ -16,7 +16,7 @@ const Control = ({
   const audioElem = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const dispatch = useDispatch();
-  const { playing } = useSelector((state) => state.global);
+  const { playing, valueVolume } = useSelector((state) => state.global);
   useEffect(() => {
     dispatch(setPlaying(isPlaying));
   }, [dispatch, isPlaying, playing]);
@@ -51,7 +51,8 @@ const Control = ({
     } else {
       audioElem.current.pause();
     }
-  }, [isPlaying]);
+    audioElem.current.volume = valueVolume / 100;
+  }, [isPlaying, valueVolume]);
   return (
     <Fragment>
       <div className="flex items-center ">

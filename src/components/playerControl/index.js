@@ -13,12 +13,12 @@ const Player = () => {
       <div className="absolute h-[100px] bottom-0 left-0 right-0 z-50 flex items-center justify-center w-full p-8 required:">
         {mood === "chill" && (
           <>
-            <div className="absolute flex font-normal text-white left-20">
-              <span className="mt-auto text-inherit h-[18px] ">
+            <div className="absolute flex h-5 font-normal text-white left-20">
+              <span className="h-full mt-auto text-inherit ">
                 Song name: {chill[currentSongIndex].name}
               </span>
               {Playing && (
-                <div className="flex-shrink-0 w-5 h-5 ml-2">
+                <div className="flex-shrink-0 w-5 h-full ml-2">
                   <img
                     className="object-cover w-full"
                     src={iconPlaying}
@@ -36,12 +36,12 @@ const Player = () => {
         )}
         {mood === "rap" && (
           <>
-            <div className="absolute flex font-normal text-white left-20">
-              <span className="mt-auto text-inherit h-[18px] ">
+            <div className="absolute flex h-5 font-normal text-white left-20">
+              <span className="h-full mt-auto text-inherit ">
                 Song name: {rap[currentSongIndex].name}
               </span>
               {Playing && (
-                <div className="flex-shrink-0 w-5 h-5 ml-2">
+                <div className="flex-shrink-0 w-5 h-full ml-2">
                   <img
                     className="object-cover w-full"
                     src={iconPlaying}
@@ -59,12 +59,12 @@ const Player = () => {
         )}
         {mood === "sleep" && (
           <>
-            <div className="absolute flex font-normal text-white left-20">
-              <span className="mt-auto text-inherit h-[18px] ">
+            <div className="absolute flex h-5 font-normal text-white left-20">
+              <span className="h-full text-inherit ">
                 Song name: {sleep[currentSongIndex].name}
               </span>
               {Playing && (
-                <div className="flex-shrink-0 w-5 h-5 ml-2">
+                <div className="flex-shrink-0 w-5 h-full ml-2">
                   <img
                     className="object-cover w-full"
                     src={iconPlaying}

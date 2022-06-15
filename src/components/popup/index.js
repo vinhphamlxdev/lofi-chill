@@ -1,12 +1,17 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { GiBookmarklet } from "react-icons/gi";
 import { GiGuitar } from "react-icons/gi";
 import { GiCoffeeCup } from "react-icons/gi";
 import { useDispatch, useSelector } from "react-redux";
-import { setMood } from "~/redux-toolkit/global/globalSlice";
+import { setMood, setValueVolume } from "~/redux-toolkit/global/globalSlice";
 import Stack from "@mui/material/Stack";
 import Slider from "@mui/material/Slider";
+import summerStorm from "~/assets/songs/summerStorm.mp3";
+import firePlace from "~/assets/songs/firePlace.mp3";
 import styled from "styled-components";
+import ReactAudioPlayer from "react-audio-player";
+import cityTraffic from "~/assets/songs/cityTraffic.mp3";
+import cityRain from "~/assets/songs/rain.mp3";
 const StyledPopup = styled.div`
   .player__progress-volume {
     position: relative;
@@ -25,43 +30,39 @@ const StyledPopup = styled.div`
   .track-slider {
     margin-bottom: 0px;
   }
+  .background-noise {
+    overflow: hidden overlay;
+    &::-webkit-scrollbar {
+      width: 5px;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 8px;
+      background-color: #14141d;
+    }
+  }
 `;
-const noseData = [
-  {
-    id: 1,
-    title: "City traffic",
-  },
-  {
-    id: 2,
-    title: "City Rain",
-  },
-  {
-    id: 3,
-    title: "Forest Sounds",
-  },
-  {
-    id: 4,
-    title: "River",
-  },
-  {
-    id: 5,
-    title: "Win",
-  },
-];
-const PopupMenu = () => {
-  const { mood } = useSelector((state) => state.global);
-  const dispatch = useDispatch();
-  const [currentMood, setCurrentMood] = useState("chill");
 
+const PopupMenu = () => {
+  const { mood, valueVolume } = useSelector((state) => state.global);
+  const dispatch = useDispatch();
+  const { valueVolumeRain } = useSelector((state) => state.global);
+  const [rainVolume, setRainVolume] = useState(valueVolumeRain);
+  const [currentMood, setCurrentMood] = useState("chill");
+  const [volumeStorm, setVolumeStorm] = useState(0);
+  const [volumeFire, setVolumeFire] = useState(0);
+  const [volumeTraffic, setVolumeTraffic] = useState(0);
+  const handleChangeVolume = (e) => {
+    dispatch(setValueVolume(e.target.value));
+  };
   useEffect(() => {
     dispatch(setMood(currentMood));
   }, [currentMood, dispatch]);
   return (
-    <StyledPopup className="absolute z-20 flex items-center justify-end w-full h-full ">
+    <StyledPopup className="absolute z-10 flex items-center justify-end w-full h-full ">
       <div className="justify-around gap-y-4 max-w-full relative px-3 py-6 w-[60px] mr-5 flex flex-col bg-popUp items-center rounded-[35px]">
         <div className="rounded-tr-[35px] relative rounded-tl-[35px] cursor-pointer">
           <i className="text-4xl font-semibold cursor-pointer text-textMenu bi bi-sliders"></i>
-          <div className="absolute flex flex-col py-4 px-7 right-full top-[-50%]  rounded-3xl mt-5 overflow-hidden w-[345px]  z-50 bg-[#070707]">
+          <div className="absolute flex flex-col py-4 px-7 right-full -top-[200%]  h-[450px]  rounded-3xl  overflow-hidden w-[345px]  z-50 bg-[#070707]">
             <h4 className="mb-5 text-xl font-semibold text-white ">Mood</h4>
             <div className="grid grid-cols-3 gap-x-7">
               <div
@@ -119,7 +120,8 @@ const PopupMenu = () => {
                 </svg>
                 <Slider
                   className="range-volume"
-                  defaultValue={30}
+                  onChange={handleChangeVolume}
+                  value={valueVolume}
                   aria-label="Disabled slider"
                 />
                 <svg
@@ -145,28 +147,88 @@ const PopupMenu = () => {
                 Background noises
               </h4>
               <div className="flex flex-col noise-container">
-                {noseData.length > 0 &&
-                  noseData.map((item) => (
-                    <div key={item.id} className="flex items-center my-4">
-                      <p className="text-base font-medium whitespace-nowrap text-textMenu">
-                        {item.title}
-                      </p>
+                <div className="flex items-center my-4">
+                  <p className="text-base w-[94px] flex-shrink-0 font-medium whitespace-nowrap text-textMenu">
+                    City traffic
+                  </p>
 
-                      <Stack
-                        className="flex-1 px-4 mb-0 track-slider "
-                        spacing={2}
-                        direction="row"
-                        sx={{ mb: 1 }}
-                        alignItems="center"
-                      >
-                        <Slider
-                          className="range-volume"
-                          defaultValue={30}
-                          aria-label="Disabled slider"
-                        />
-                      </Stack>
-                    </div>
-                  ))}
+                  <Stack
+                    className="flex-1 px-4 mb-0 track-slider "
+                    spacing={2}
+                    direction="row"
+                    sx={{ mb: 1 }}
+                    alignItems="center"
+                  >
+                    <Slider
+                      className="range-volume"
+                      defaultValue={30}
+                      aria-label="Disabled slider"
+                      onChange={(e) => setVolumeTraffic(e.target.value)}
+                    />
+                  </Stack>
+                  <ReactAudioPlayer
+                    src={cityTraffic}
+                    volume={volumeTraffic / 100}
+                    autoPlay
+                    loop
+                    preload="auto"
+                  />
+                </div>
+
+                <div className="flex items-center my-4">
+                  <p className="text-base w-[94px] flex-shrink-0 font-medium whitespace-nowrap text-textMenu">
+                    Storm
+                  </p>
+
+                  <Stack
+                    className="flex-1 px-4 mb-0 track-slider "
+                    spacing={2}
+                    direction="row"
+                    sx={{ mb: 1 }}
+                    alignItems="center"
+                  >
+                    <Slider
+                      className="range-volume"
+                      defaultValue={30}
+                      aria-label="Disabled slider"
+                      onChange={(e) => setVolumeStorm(e.target.value)}
+                    />
+                  </Stack>
+                  <ReactAudioPlayer
+                    volume={volumeStorm / 100}
+                    src={summerStorm}
+                    autoPlay
+                    preload="auto"
+                    loop
+                  />
+                </div>
+                <div className="flex items-center my-4">
+                  <p className="text-base w-[94px] flex-shrink-0 font-medium whitespace-nowrap text-textMenu">
+                    Fireplace
+                  </p>
+
+                  <Stack
+                    className="flex-1 px-4 mb-0 track-slider "
+                    spacing={2}
+                    direction="row"
+                    sx={{ mb: 1 }}
+                    alignItems="center"
+                  >
+                    <Slider
+                      className="range-volume"
+                      defaultValue={30}
+                      aria-label="Disabled slider"
+                      onChange={(e) => setVolumeFire(e.target.value)}
+                    />
+                  </Stack>
+                  <ReactAudioPlayer
+                    src={firePlace}
+                    volume={volumeFire / 100}
+                    loop
+                    preload="auto"
+                    autoPlay
+                  />
+                </div>
               </div>
             </div>
           </div>

@@ -5,7 +5,7 @@ import chill4 from "~/assets/songs/chill4.mp3";
 import chill5 from "~/assets/songs/chill5.mp3";
 import rap1 from "~/assets/songs/rap1.mp3";
 import rap2 from "~/assets/songs/rap2.mp3";
-import rap3 from "~/assets/songs/rap2.mp3";
+import rap3 from "~/assets/songs/rap3.mp3";
 import rap4 from "~/assets/songs/rap4.mp3";
 export const chill = [
   {
@@ -47,7 +47,7 @@ export const rap = [
   },
   {
     id: 3,
-    name: "Đen - hai triệu năm ft. Biên ",
+    name: "Đen - Mang Tiền Về Cho Mẹ ft. Nguyên Thảo",
     src: `${rap3}`,
   },
   {
