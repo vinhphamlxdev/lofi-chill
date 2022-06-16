@@ -53,4 +53,42 @@ export const GlobalClasses = css`
     left: 50%;
     transform: translate(-50%, -50%);
   }
+  .song-name {
+    position: relative;
+    overflow: hidden;
+    & p {
+      height: 100%;
+      -moz-animation: marquee 6s linear infinite;
+      -webkit-animation: marquee 6s linear infinite;
+      animation: marquee 6s linear infinite;
+    }
+  }
+  @-moz-keyframes marquee {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  @-webkit-keyframes marquee {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  @keyframes marquee {
+    0% {
+      -moz-transform: translateX(100%);
+      -webkit-transform: translateX(100%);
+      transform: translateX(100%);
+    }
+    100% {
+      -moz-transform: translateX(-100%);
+      -webkit-transform: translateX(-100%);
+      transform: translateX(-100%);
+    }
+  }
 `;

@@ -5,6 +5,9 @@ import { toggleDarkMode } from "~/redux-toolkit/global/globalSlice";
 import Tippy from "@tippyjs/react";
 
 const StyledDarkmode = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-left: 8px;
   margin-right: 8px;
   transition: all 0.5s;

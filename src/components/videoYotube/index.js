@@ -8,7 +8,7 @@ const VideoYoutube = () => {
     setSubmit(true);
   };
   return (
-    <div className="absolute center  left-0 h-[150px]  flex flex-col  top-2/4 -translate-y-2/4 mr-auto z-20 w-[200px]   ">
+    <div className="absolute ms:hidden ml-5  left-0 h-[150px]  flex flex-col  top-2/4 -translate-y-2/4 mr-auto z-20 w-[200px]   ">
       <div className="flex-1 video-youtube">
         {submit && (
           <>

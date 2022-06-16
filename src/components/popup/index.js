@@ -8,10 +8,11 @@ import Stack from "@mui/material/Stack";
 import Slider from "@mui/material/Slider";
 import summerStorm from "~/assets/songs/summerStorm.mp3";
 import firePlace from "~/assets/songs/firePlace.mp3";
+import ocean from "~/assets/songs/ocean.mp3";
+import forest from "~/assets/songs/forest.mp3";
 import styled from "styled-components";
 import ReactAudioPlayer from "react-audio-player";
 import cityTraffic from "~/assets/songs/cityTraffic.mp3";
-import cityRain from "~/assets/songs/rain.mp3";
 import useClickOutSide from "~/hooks/useClickOutSide";
 const StyledPopup = styled.div`
   position: absolute;
@@ -20,6 +21,9 @@ const StyledPopup = styled.div`
   transform: translateY(-50%);
   width: 80px;
   z-index: 30;
+  .popup-menu.show {
+    border-radius: 0 34px 34px 34px;
+  }
   .player__progress-volume {
     position: relative;
     width: 100%;
@@ -57,6 +61,8 @@ const PopupMenu = () => {
   const [volumeStorm, setVolumeStorm] = useState(0);
   const [volumeFire, setVolumeFire] = useState(0);
   const [volumeTraffic, setVolumeTraffic] = useState(0);
+  const [volumeOcean, setVolumeOcean] = useState(0);
+  const [volumeForest, setVolumeForest] = useState(0);
   const handleChangeVolume = (e) => {
     dispatch(setValueVolume(e.target.value));
   };
@@ -64,8 +70,12 @@ const PopupMenu = () => {
     dispatch(setMood(currentMood));
   }, [currentMood, dispatch]);
   return (
-    <StyledPopup className="absolute z-10 flex items-center justify-end w-full h-full ">
-      <div className="justify-around gap-y-4 max-w-full relative px-3 py-6 w-[60px] mr-5 flex flex-col bg-popUp items-center rounded-[35px]">
+    <StyledPopup className="absolute z-10 flex items-center justify-end w-full h-full">
+      <div
+        className={`justify-around ms:mr-2 popup-menu gap-y-4 max-w-full relative px-3 py-6 w-[60px] mr-5 flex flex-col bg-popUp items-center rounded-[35px] ${
+          show ? "show" : ""
+        }`}
+      >
         <div className="rounded-tr-[35px] relative rounded-tl-[35px] cursor-pointer">
           <i
             ref={menuRef}
@@ -75,7 +85,7 @@ const PopupMenu = () => {
           {show && (
             <div
               ref={nodeRef}
-              className="absolute select-none flex flex-col py-4 px-7 right-full -top-[200%]  h-[450px]  rounded-3xl  overflow-hidden w-[345px]  z-50 bg-[#070707]"
+              className="absolute select-none flex flex-col py-4 px-7 right-[133%] -top-[200%]  h-[450px]  rounded-3xl  overflow-hidden w-[345px]  z-50 bg-[#070707]"
             >
               <h4 className="mb-5 text-xl font-semibold text-white ">Mood</h4>
               <div className="grid grid-cols-3 gap-x-7">
@@ -166,7 +176,7 @@ const PopupMenu = () => {
                 </h4>
                 <div className="flex flex-col noise-container">
                   <div className="flex items-center my-4">
-                    <p className="text-base w-[94px] flex-shrink-0 font-medium whitespace-nowrap text-textMenu">
+                    <p className="text-base w-[100px] flex-shrink-0 font-medium whitespace-nowrap text-textMenu">
                       City traffic
                     </p>
 
@@ -194,7 +204,7 @@ const PopupMenu = () => {
                   </div>
 
                   <div className="flex items-center my-4">
-                    <p className="text-base w-[94px] flex-shrink-0 font-medium whitespace-nowrap text-textMenu">
+                    <p className="text-base w-[100px] flex-shrink-0 font-medium whitespace-nowrap text-textMenu">
                       Storm
                     </p>
 
@@ -221,7 +231,7 @@ const PopupMenu = () => {
                     />
                   </div>
                   <div className="flex items-center my-4">
-                    <p className="text-base w-[94px] flex-shrink-0 font-medium whitespace-nowrap text-textMenu">
+                    <p className="text-base w-[100px] flex-shrink-0 font-medium whitespace-nowrap text-textMenu">
                       Fireplace
                     </p>
 
@@ -242,6 +252,60 @@ const PopupMenu = () => {
                     <ReactAudioPlayer
                       src={firePlace}
                       volume={volumeFire / 100}
+                      loop
+                      preload="auto"
+                      autoPlay
+                    />
+                  </div>
+                  <div className="flex items-center my-4">
+                    <p className="text-base w-[100px] flex-shrink-0 font-medium whitespace-nowrap text-textMenu">
+                      Ocean Sound
+                    </p>
+
+                    <Stack
+                      className="flex-1 px-4 mb-0 track-slider "
+                      spacing={2}
+                      direction="row"
+                      sx={{ mb: 1 }}
+                      alignItems="center"
+                    >
+                      <Slider
+                        className="range-volume"
+                        defaultValue={30}
+                        aria-label="Disabled slider"
+                        onChange={(e) => setVolumeOcean(e.target.value)}
+                      />
+                    </Stack>
+                    <ReactAudioPlayer
+                      src={ocean}
+                      volume={volumeOcean / 100}
+                      loop
+                      preload="auto"
+                      autoPlay
+                    />
+                  </div>
+                  <div className="flex items-center my-4">
+                    <p className="text-base w-[100px] flex-shrink-0 font-medium whitespace-nowrap text-textMenu">
+                      Forest Sounds
+                    </p>
+
+                    <Stack
+                      className="flex-1 px-4 mb-0 track-slider "
+                      spacing={2}
+                      direction="row"
+                      sx={{ mb: 1 }}
+                      alignItems="center"
+                    >
+                      <Slider
+                        className="range-volume"
+                        defaultValue={30}
+                        aria-label="Disabled slider"
+                        onChange={(e) => setVolumeForest(e.target.value)}
+                      />
+                    </Stack>
+                    <ReactAudioPlayer
+                      src={forest}
+                      volume={volumeForest / 100}
                       loop
                       preload="auto"
                       autoPlay

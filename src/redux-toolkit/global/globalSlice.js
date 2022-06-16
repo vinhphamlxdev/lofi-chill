@@ -8,6 +8,7 @@ export const globalSlice = createSlice({
     Playing: false,
     valueVolume: 50,
     rainValueVolume: 0,
+    user: undefined,
   },
   reducers: {
     toggleDarkMode: (state, action) => ({
@@ -34,6 +35,10 @@ export const globalSlice = createSlice({
       ...state,
       rainValueVolume: action.payload,
     }),
+    setUser: (state, action) => ({
+      ...state,
+      user: action.payload,
+    }),
   },
 });
 export const {
@@ -43,5 +48,6 @@ export const {
   setPlaying,
   setValueVolume,
   setValueVolumeRain,
+  setUser,
 } = globalSlice.actions;
 export default globalSlice.reducer;
