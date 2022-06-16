@@ -8,7 +8,10 @@ import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
 import { useDispatch, useSelector } from "react-redux";
 import rainMp3 from "~/assets/songs/rain.mp3";
-import { toggleRainStatus } from "~/redux-toolkit/global/globalSlice";
+import {
+  setValueVolumeRain,
+  toggleRainStatus,
+} from "~/redux-toolkit/global/globalSlice";
 import { Slider, Stack } from "@mui/material";
 const StyledNavbar = styled.div`
   & .premium {
@@ -22,13 +25,16 @@ const StyledNavbar = styled.div`
     height: 10px;
     color: #f3a952;
   }
+  & .rain-btn:hover .rain-track {
+    opacity: 1;
+    visibility: visible;
+  }
 `;
 
 const Header = () => {
   const audioRef = useRef(null);
   const [rain, setRain] = useState("rain");
-  const { rainVolume } = useSelector((state) => state.global);
-  const [valueRain, setValueRain] = useState(0);
+  const { rainValueVolume } = useSelector((state) => state.global);
   const dispatch = useDispatch();
   const toggleStatusRain = () => {
     if (rain === "rain") {
@@ -54,9 +60,17 @@ const Header = () => {
       }
     }
   };
+  const handleChangeValueRain = (e) => {
+    dispatch(setValueVolumeRain(e.target.value));
+    if (rainValueVolume === 0) {
+      dispatch(toggleRainStatus(""));
+    } else {
+      dispatch(toggleRainStatus("rain"));
+    }
+  };
   useEffect(() => {
-    audioRef.current.volume = rainVolume / 100;
-  }, [rainVolume]);
+    audioRef.current.volume = rainValueVolume / 100;
+  }, [rainValueVolume]);
   return (
     <StyledNavbar className="h-20 z-50 flex justify-between items-center px-[48px] fixed w-full">
       <div className="relative max-w-[150px]  max-h-[150px]">
@@ -68,20 +82,21 @@ const Header = () => {
       </div>
       <div className="flex items-center gap-4">
         <div className="relative">
-          <div
-            onClick={toggleStatusRain}
-            className="text-2xl cursor-pointer rain-btn "
-          >
-            <FaCloudRain className=" hover:opacity-50" />
+          <div className="text-2xl cursor-pointer rain-btn ">
+            <FaCloudRain
+              onClick={toggleStatusRain}
+              className=" hover:opacity-50"
+            />
             <Stack
-              className="absolute rain-track w-[100px] "
+              className="absolute invisible opacity-0 rain-track w-[100px] "
               spacing={2}
               direction="row"
               sx={{ mb: 1 }}
               alignItems="center"
             >
               <Slider
-                onChange={(e) => setValueRain(e.target.value)}
+                value={rainValueVolume}
+                onChange={handleChangeValueRain}
                 className="range-volume"
                 defaultValue={30}
                 aria-label="Disabled slider"
