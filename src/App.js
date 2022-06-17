@@ -33,10 +33,12 @@ function App() {
     <Fragment>
       <GlobalStyles></GlobalStyles>
       {loading && <Loading />}
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/sign-in" element={<SignIn />} />
-      </Routes>
+      {!loading && (
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/sign-in" element={<SignIn />} />
+        </Routes>
+      )}
     </Fragment>
   );
 }
