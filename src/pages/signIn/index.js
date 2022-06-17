@@ -4,7 +4,7 @@ import bgSignIn from "~/assets/signinbg.jpg";
 import logo from "~/assets/logo.gif";
 import logoGoogle from "~/assets/google.svg";
 import { useNavigate } from "react-router-dom";
-import { signInWithPopup } from "firebase/auth";
+import { onAuthStateChanged, signInWithPopup } from "firebase/auth";
 import { authentication, providerGoogle } from "~/components/firebase/config";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "~/redux-toolkit/global/globalSlice";
@@ -18,15 +18,16 @@ const StyledSignIn = styled.div`
 const SignIn = () => {
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.global);
+  console.log("user login:", user);
+
   const dispatch = useDispatch();
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+
   const handleSignInWithGoogle = () => {
     signInWithPopup(authentication, providerGoogle)
       .then((result) => {
         const user = result.user;
         // console.log(user);
+        toast.success(`Login successfully, hello ${user.displayName}`);
         dispatch(setUser(user));
       })
       .catch((err) => {

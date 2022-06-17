@@ -8,7 +8,8 @@ export const globalSlice = createSlice({
     Playing: false,
     valueVolume: 50,
     rainValueVolume: 0,
-    user: undefined,
+    user: null,
+    userLogin: {},
   },
   reducers: {
     toggleDarkMode: (state, action) => ({

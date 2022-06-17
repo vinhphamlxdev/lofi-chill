@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import logo from "~/assets/logo.gif";
 import styled from "styled-components";
+import { FiLogOut } from "react-icons/fi";
 import DarkMode from "./toggle";
 import fullScreen from "~/assets/fullscreen.svg";
 import userIcon from "~/assets/user.svg";
@@ -60,6 +61,7 @@ const Header = () => {
   const audioRef = useRef(null);
   const [rain, setRain] = useState("rain");
   const { rainValueVolume, user } = useSelector((state) => state.global);
+  console.log("user header:", user);
   const dispatch = useDispatch();
   const toggleStatusRain = () => {
     if (rain === "rain") {
@@ -105,6 +107,7 @@ const Header = () => {
         console.log(error);
       });
     toast.success("Logout successfully");
+    console.log("logout user:", user);
   };
   return (
     <StyledNavbar className="h-20 sx:px-3 lg:px-6 z-50 flex justify-between items-center px-[48px] fixed w-full">
@@ -199,7 +202,7 @@ const Header = () => {
                 className="text-white rounded-bl-md rounded-br-md  top-[-43px]  items-center gap-4 hover:bg-primary bg-[#070707] px-3 py-[6px] flex flex-row transition-all"
               >
                 <div className="w-[14px] flex items-center h-[14px] relative">
-                  <img className="object-cover w-full" src={userIcon} alt="" />
+                  <FiLogOut className="text-2xl font-semibold text-white" />
                 </div>
                 <p className="text-sm font-normal text-white whitespace-nowrap">
                   LogOut

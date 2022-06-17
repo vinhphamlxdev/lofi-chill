@@ -4,16 +4,16 @@ import { Fragment, useEffect } from "react";
 import { GlobalStyles } from "./styles/GlobalStyles";
 import Home from "./pages/home";
 import SignIn from "./pages/signIn";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { onAuthStateChanged } from "firebase/auth";
 import { authentication } from "./components/firebase/config";
 import { setUser } from "./redux-toolkit/global/globalSlice";
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
-    onAuthStateChanged(authentication, (user) => {
-      if (user) {
-        dispatch(setUser(user));
+    onAuthStateChanged(authentication, (userLogin) => {
+      if (userLogin) {
+        dispatch(setUser(userLogin));
       } else {
         setUser(undefined);
       }
