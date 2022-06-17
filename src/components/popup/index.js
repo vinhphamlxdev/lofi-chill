@@ -14,6 +14,7 @@ import styled from "styled-components";
 import ReactAudioPlayer from "react-audio-player";
 import cityTraffic from "~/assets/songs/cityTraffic.mp3";
 import useClickOutSide from "~/hooks/useClickOutSide";
+import { toast } from "react-toastify";
 const StyledPopup = styled.div`
   position: absolute;
   top: 50%;
@@ -72,7 +73,7 @@ const PopupMenu = () => {
   return (
     <StyledPopup className="absolute z-10 flex items-center justify-end w-full h-full">
       <div
-        className={`justify-around ms:mr-2 popup-menu gap-y-4 max-w-full relative px-3 py-6 w-[60px] mr-5 flex flex-col bg-popUp items-center rounded-[35px] ${
+        className={`justify-around ms:mr-2 popup-menu sx:w-[48px] gap-y-4 max-w-full relative px-3 py-6 w-[60px] mr-5 flex flex-col bg-popUp items-center rounded-[35px] ${
           show ? "show" : ""
         }`}
       >
@@ -80,12 +81,12 @@ const PopupMenu = () => {
           <i
             ref={menuRef}
             onClick={() => setShow(!show)}
-            className="text-4xl font-semibold cursor-pointer text-textMenu bi bi-sliders"
+            className="text-4xl font-semibold cursor-pointer sx:text-2xl text-textMenu bi bi-sliders"
           ></i>
           {show && (
             <div
               ref={nodeRef}
-              className="absolute select-none flex flex-col py-4 px-7 right-[133%] -top-[200%]  h-[450px]  rounded-3xl  overflow-hidden w-[345px]  z-50 bg-[#070707]"
+              className="absolute sx:top-[-262%] flex flex-col select-none py-4 px-7 right-[133%] -top-[200%]  h-[450px]  rounded-3xl  overflow-hidden sx:w-[310px] w-[345px]  z-50 bg-[#070707]"
             >
               <h4 className="mb-5 text-xl font-semibold text-white ">Mood</h4>
               <div className="grid grid-cols-3 gap-x-7">
@@ -317,7 +318,10 @@ const PopupMenu = () => {
           )}
         </div>
         <div className="line w-full h-[3px] bg-textMenu"></div>
-        <div className="text-4xl cursor-pointer text-textMenu">
+        <div
+          onClick={() => toast.error("Tính năng chưa được cập nhật!!")}
+          className="text-4xl cursor-pointer sx:text-2xl text-textMenu"
+        >
           <GiBookmarklet />
         </div>
       </div>

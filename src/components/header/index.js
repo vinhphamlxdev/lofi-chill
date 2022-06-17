@@ -61,7 +61,6 @@ const Header = () => {
   const audioRef = useRef(null);
   const [rain, setRain] = useState("rain");
   const { rainValueVolume, user } = useSelector((state) => state.global);
-  console.log("user header:", user);
   const dispatch = useDispatch();
   const toggleStatusRain = () => {
     if (rain === "rain") {
@@ -143,16 +142,17 @@ const Header = () => {
           </div>
         </div>
         <DarkMode />
-        <Tippy content="Tính năng chưa được cập nhật">
-          <div className="premium ms:hidden cursor-pointer  rounded-lg text-sm p-[5px] text-white ">
-            <div className="flex items-center gap-2">
-              <h3>🚀</h3>
-              <p className="bold">
-                Access +20 scenes <br />& more with premium
-              </p>
-            </div>
+        <div
+          onClick={() => toast.error("Tính năng chưa được cập nhật")}
+          className="premium ms:hidden cursor-pointer  rounded-lg text-sm p-[5px] text-white "
+        >
+          <div className="flex items-center gap-2">
+            <h3>🚀</h3>
+            <p className="bold">
+              Access +20 scenes <br />& more with premium
+            </p>
           </div>
-        </Tippy>
+        </div>
         {!user && (
           <button
             onClick={() => navigate("/sign-in")}
@@ -169,7 +169,10 @@ const Header = () => {
               alt=""
             />
             <div className="absolute z-50  after:absolute after:content-[''] after:w-full after:bg-transparent after:h-4 after:z-20   hidden  rounded-lg  bg-[#070707] w-[170px]  user-info transition-all duration-500   flex-col   -left-[140px]">
-              <div className="text-white top-[44px] rounded-tl-md rounded-tr-md  items-center gap-4 hover:bg-primary bg-[#070707] px-3 py-[6px] flex flex-row transition-all">
+              <div
+                onClick={() => toast.error("Tính năng chưa được cập nhật")}
+                className="text-white top-[44px] rounded-tl-md rounded-tr-md  items-center gap-4 hover:bg-primary bg-[#070707] px-3 py-[6px] flex flex-row transition-all"
+              >
                 <div className="w-[14px] flex items-center h-[14px] relative">
                   <img className="object-cover w-full" src={userIcon} alt="" />
                 </div>
@@ -177,7 +180,10 @@ const Header = () => {
                   User settings
                 </p>
               </div>
-              <div className="text-white top-[-43px]  items-center gap-4 hover:bg-primary bg-[#070707] px-3 py-[6px] flex flex-row transition-all">
+              <div
+                onClick={() => toast.error("Tính năng chưa được cập nhật")}
+                className="text-white top-[-43px]  items-center gap-4 hover:bg-primary bg-[#070707] px-3 py-[6px] flex flex-row transition-all"
+              >
                 <div className="w-[14px] flex items-center h-[14px] relative">
                   <img
                     className="object-cover w-full"
@@ -189,7 +195,10 @@ const Header = () => {
                   General settings
                 </p>
               </div>
-              <div className="text-white top-[-43px]  items-center gap-4 hover:bg-primary bg-[#070707] px-3 py-[6px] flex flex-row transition-all">
+              <div
+                onClick={() => toast.error("Tính năng chưa được cập nhật")}
+                className="text-white top-[-43px]  items-center gap-4 hover:bg-primary bg-[#070707] px-3 py-[6px] flex flex-row transition-all"
+              >
                 <div className="w-[14px] flex items-center h-[14px] relative">
                   <img className="object-cover w-full" src={spotify} alt="" />
                 </div>

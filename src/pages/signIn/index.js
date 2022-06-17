@@ -4,7 +4,7 @@ import bgSignIn from "~/assets/signinbg.jpg";
 import logo from "~/assets/logo.gif";
 import logoGoogle from "~/assets/google.svg";
 import { useNavigate } from "react-router-dom";
-import { onAuthStateChanged, signInWithPopup } from "firebase/auth";
+import { signInWithPopup } from "firebase/auth";
 import { authentication, providerGoogle } from "~/components/firebase/config";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "~/redux-toolkit/global/globalSlice";
@@ -49,9 +49,9 @@ const SignIn = () => {
         </div>
       </div>
       <div className="absolute flex flex-col justify-center w-full top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 ">
-        <h3 className="text-3xl font-medium text-center text-white">
+        {/* <h3 className="text-3xl font-medium text-center text-white">
           Welcome to my website
-        </h3>
+        </h3> */}
         <div className="flex justify-center w-full mt-10">
           <div className="px-10 gap-y-5 sx:py-10 sx:px-5 py-10 flex flex-col  bg-black rounded-lg max-w-[400px] w-[350px] ">
             <h3 className="mb-5 text-3xl font-semibold text-center text-white">

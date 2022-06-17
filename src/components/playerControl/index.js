@@ -13,8 +13,11 @@ const Player = () => {
         {mood === "chill" && (
           <>
             <div className="absolute flex h-5 font-normal text-white lg:left-7 left-20 sx:hidden">
-              <span className="h-full  song-name  mt-auto capitalize text-inherit w-[150px] overflow-hidden ">
-                <p> {chill[currentSongIndex].name}</p>
+              <span className="h-full  song-name  capitalize text-inherit w-[150px] overflow-hidden">
+                <p className="whitespace-nowrap">
+                  {" "}
+                  {chill[currentSongIndex].name}
+                </p>
               </span>
               {Playing && (
                 <div className="flex-shrink-0 w-5 h-full ml-2">
@@ -36,8 +39,11 @@ const Player = () => {
         {mood === "rap" && (
           <>
             <div className="absolute flex h-5 font-normal text-white lg:left-7 left-20 sx:hidden">
-              <span className="h-full song-name  mt-auto capitalize text-inherit w-[150px] overflow-hidden ">
-                <p> {rap[currentSongIndex]?.name}</p>
+              <span className="h-full  song-name  capitalize text-inherit w-[150px] overflow-hidden">
+                <p className="whitespace-nowrap">
+                  {" "}
+                  {rap[currentSongIndex]?.name}
+                </p>
               </span>
               {Playing && (
                 <div className="flex-shrink-0 w-5 h-full ml-2">
@@ -59,8 +65,11 @@ const Player = () => {
         {mood === "sleep" && (
           <>
             <div className="absolute flex h-5 font-normal text-white lg:left-7 left-20 sx:hidden">
-              <span className="h-full w-[150px] song-name overflow-hidden text-inherit ">
-                <p> {sleep[currentSongIndex].name}</p>
+              <span className="h-full  song-name  capitalize text-inherit w-[150px] overflow-hidden">
+                <p className="whitespace-nowrap">
+                  {" "}
+                  {sleep[currentSongIndex].name}
+                </p>
               </span>
               {Playing && (
                 <div className="flex-shrink-0 w-5 h-full ml-2">
