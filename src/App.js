@@ -13,7 +13,9 @@ function App() {
   const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
   const handleLoadScreen = () => {
-    setLoading(false);
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
   };
 
   useEffect(() => {
