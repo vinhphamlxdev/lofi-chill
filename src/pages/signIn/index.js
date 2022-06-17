@@ -18,7 +18,6 @@ const StyledSignIn = styled.div`
 const SignIn = () => {
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.global);
-  console.log("user login:", user);
 
   const dispatch = useDispatch();
 
