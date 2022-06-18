@@ -3,7 +3,8 @@ import chill2 from "~/assets/songs/chill2.mp3";
 import chill3 from "~/assets/songs/chill3.mp3";
 import chill4 from "~/assets/songs/chill4.mp3";
 import chill5 from "~/assets/songs/chill5.mp3";
-import chill6 from "~/assets/songs/chill5.mp3";
+import chill6 from "~/assets/songs/chill6.mp3";
+import chill7 from "~/assets/songs/chill7.mp3";
 import rap1 from "~/assets/songs/rap1.mp3";
 import rap2 from "~/assets/songs/rap2.mp3";
 import rap3 from "~/assets/songs/rap3.mp3";
@@ -40,6 +41,11 @@ export const chill = [
     id: 6,
     name: "Cảm Ơn Vì Tất Cả (Lofi Ver)",
     src: `${chill6}`,
+  },
+  {
+    id: 6,
+    name: "Kiếp Má Hồng (Lofi Ver.)",
+    src: `${chill7}`,
   },
 ];
 export const rap = [
