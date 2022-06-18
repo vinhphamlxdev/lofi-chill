@@ -106,7 +106,6 @@ const Header = () => {
         console.log(error);
       });
     toast.success("Logout successfully");
-    console.log("logout user:", user);
   };
   return (
     <StyledNavbar className="h-20 sx:px-3 lg:px-6 z-50 flex justify-between items-center px-[48px] fixed w-full">
