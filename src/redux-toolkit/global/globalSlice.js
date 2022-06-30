@@ -9,37 +9,29 @@ export const globalSlice = createSlice({
     valueVolume: 50,
     rainValueVolume: 0,
     user: null,
-    userLogin: {},
   },
   reducers: {
-    toggleDarkMode: (state, action) => ({
-      ...state,
-      mode: action.payload,
-    }),
-    toggleRainStatus: (state, action) => ({
-      ...state,
-      rainMode: action.payload,
-    }),
-    setMood: (state, action) => ({
-      ...state,
-      mood: action.payload,
-    }),
-    setPlaying: (state, action) => ({
-      ...state,
-      Playing: action.payload,
-    }),
-    setValueVolume: (state, action) => ({
-      ...state,
-      valueVolume: action.payload,
-    }),
-    setValueVolumeRain: (state, action) => ({
-      ...state,
-      rainValueVolume: action.payload,
-    }),
-    setUser: (state, action) => ({
-      ...state,
-      user: action.payload,
-    }),
+    toggleDarkMode: (state, action) => {
+      state.mode = action.payload;
+    },
+    toggleRainStatus: (state, action) => {
+      state.rainMode = action.payload;
+    },
+    setMood: (state, action) => {
+      state.mood = action.payload;
+    },
+    setPlaying: (state, action) => {
+      state.Playing = action.payload;
+    },
+    setValueVolume: (state, action) => {
+      state.valueVolume = action.payload;
+    },
+    setValueVolumeRain: (state, action) => {
+      state.rainValueVolume = action.payload;
+    },
+    setUser: (state, action) => {
+      state.user = action.payload;
+    },
   },
 });
 export const {
