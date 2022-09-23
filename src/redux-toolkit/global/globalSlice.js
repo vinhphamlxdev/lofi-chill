@@ -6,6 +6,7 @@ export const globalSlice = createSlice({
     rainMode: "",
     mood: "chill",
     Playing: false,
+    isLoop: false,
     valueVolume: 50,
     rainValueVolume: 0,
     user: null,
@@ -13,6 +14,9 @@ export const globalSlice = createSlice({
   reducers: {
     toggleDarkMode: (state, action) => {
       state.mode = action.payload;
+    },
+    setRepeat: (state, action) => {
+      state.isLoop = action.payload;
     },
     toggleRainStatus: (state, action) => {
       state.rainMode = action.payload;
@@ -39,6 +43,7 @@ export const {
   toggleRainStatus,
   setMood,
   setPlaying,
+  setRepeat,
   setValueVolume,
   setValueVolumeRain,
   setUser,

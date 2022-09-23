@@ -12,16 +12,14 @@ const Control = ({
   setCurrentSongIndex,
   nextSongIndex,
 }) => {
-  // console.log("current song:", songs[currentSongIndex].src);
   const audioElem = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const dispatch = useDispatch();
-  const { playing, valueVolume } = useSelector((state) => state.global);
+  const { playing, valueVolume, isLoop } = useSelector((state) => state.global);
   useEffect(() => {
     dispatch(setPlaying(isPlaying));
   }, [dispatch, isPlaying, playing]);
   const nextSong = (forwards = true) => {
-    // console.log("nextSong");
     if (forwards) {
       setCurrentSongIndex(() => {
         let temp = currentSongIndex;
@@ -32,7 +30,6 @@ const Control = ({
         return temp;
       });
     } else {
-      console.log("prev song");
       setCurrentSongIndex(() => {
         let temp = currentSongIndex;
         temp--;
@@ -79,6 +76,7 @@ const Control = ({
           <img className="object-cover w-full" src={nextBtn} alt="" />
         </div>
         <audio
+          loop={isLoop}
           autoPlay
           onEnded={() => nextSong(true)}
           src={songs[currentSongIndex].src}
