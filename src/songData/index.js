@@ -26,7 +26,7 @@ export const chill = [
   },
   {
     id: 3,
-    name: "Chẳng Thể Tìm Được Em (Lofi Ver)",
+    name: "Chạnh Lòng Thương Cô 2 (Lofi Ver)",
     src: chill3,
   },
   {
